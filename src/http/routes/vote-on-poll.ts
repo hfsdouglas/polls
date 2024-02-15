@@ -2,15 +2,6 @@ import { randomUUID } from "crypto";
 import { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { prisma } from "../../lib/prisma";
-import internal from "stream";
-
-interface vote {
-    id: number, 
-    sessionId: string,
-    createdAt: Date, 
-    pollOptionId: string,
-    pollId: string 
-}
 
 export async function voteOnPoll(app: FastifyInstance) {
     app.post('/polls/:pollId/votes', async (request, reply) => {
